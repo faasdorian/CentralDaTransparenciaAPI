@@ -1,4 +1,4 @@
-package br.zenith.centraldatransparenciaapi;
+package br.zenith.centraldatransparenciaapi.controller;
 
 import br.zenith.centraldatransparenciaapi.model.City;
 import br.zenith.centraldatransparenciaapi.repository.CityRepository;
