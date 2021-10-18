@@ -21,14 +21,21 @@ public class ExpenseController {
         this.expenseService = expenseService;
     }
 
-    @GetMapping("/{cityId}")
-    public ResponseEntity<List<Expense>> getCityExpenses(@PathVariable String cityId) {
-        List<Expense> expenses = expenseService.getAllExpensesByCityId(Long.parseLong(cityId));
+    @GetMapping("/{cityId}/{page}")
+    public ResponseEntity<List<Expense>> getCityExpenses(@PathVariable String cityId, @PathVariable String page) {
+        List<Expense> expenses = expenseService.getExpensesByPage(Long.parseLong(cityId), Integer.parseInt(page));
 
         if (expenses.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return new ResponseEntity<>(expenses, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(expenses, HttpStatus.OK);
+    }
+
+    @GetMapping("/{cityId}/count")
+    public ResponseEntity<Integer> getCityExpensesCount(@PathVariable String cityId) {
+        int expensesCount = expenseService.getExpensesCount(Long.parseLong(cityId));
+
+        return new ResponseEntity<>(expensesCount, HttpStatus.OK);
     }
 }

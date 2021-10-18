@@ -1,7 +1,6 @@
 package br.zenith.centraldatransparenciaapi.controller;
 
 import br.zenith.centraldatransparenciaapi.model.City;
-import br.zenith.centraldatransparenciaapi.repository.CityRepository;
 import br.zenith.centraldatransparenciaapi.service.CityService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/city")
+@RequestMapping("/cities")
 public class CityController {
 
     CityService  cityService;
@@ -22,7 +21,7 @@ public class CityController {
         this.cityService = cityService;
     }
 
-    @GetMapping("/cities")
+    @GetMapping("/list")
     public ResponseEntity<List<City>> getCities() {
         List<City> cities = cityService.getAll();
         return new ResponseEntity<>(cities, HttpStatus.OK);

@@ -18,9 +18,6 @@ public class City {
 	private String nome;
 	@Column(name = "NOME_EXTENSO")
 	private String nomeExtenso;
-	@OneToMany
-	@JoinColumn(name = "EXPENSE_ID")
-	Set<Expense> expenses = new HashSet<>();
 
 	public City() {
 	}

@@ -22,9 +22,8 @@ public class Expense {
 	private String nomeFornecedor;
 	@Column(name = "DATA_EMISSAO")
 	private String dataEmissao;
-	@ManyToOne
-	@JoinColumn(name = "CITY_ID")
-	City city;
+	@Column(name = "CITY_ID")
+	private Long cityId;
 
 	public Expense() {
 	}
